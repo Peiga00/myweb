@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>營養管家 - 個人化營養建議</title>
+</head>
+<body>
+    <h1>輸入您的健康資料</h1>
+    <form id="health-form">
+        <label for="age">年齡：</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="gender">性別：</label>
+        <select id="gender" name="gender" required>
+            <option value="male">男性</option>
+            <option value="female">女性</option>
+        </select><br><br>
+
+        <label for="goals">健康目標：</label>
+        <select id="goals" name="goals" required>
+            <option value="提升免疫力">提升免疫力</option>
+            <option value="促進心血管健康">促進心血管健康</option>
+            <option value="增強能量和活力">增強能量和活力</option>
+            <option value="改善消化系統">改善消化系統</option>
+            <option value="支持骨骼健康">支持骨骼健康</option>
+            <option value="保養皮膚">保養皮膚</option>
+            <option value="減少炎症">減少炎症</option>
+        </select><br><br>
+
+        <button type="button" onclick="navigateToRecommendations()">獲取建議</button>
+    </form>
+
+    <script>
+        function navigateToRecommendations() {
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const goals = document.getElementById('goals').value;
+            
+            // 構建URL並將健康資料作為查詢參數附加到URL
+            const url = `recommendations.html?age=${age}&gender=${gender}&goals=${encodeURIComponent(goals)}`;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

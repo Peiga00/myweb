@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>營養管家 - 建議</title>
+</head>
+<body>
+    <h1>您的個人化營養建議</h1>
+    <div id="recommendations"></div>
+
+    <script>
+        // 解析 URL 中的查詢參數
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                age: params.get('age'),
+                gender: params.get('gender'),
+                goals: params.get('goals')
+            };
+        }
+
+        // 根據健康目標提供建議
+        function showRecommendations() {
+            const { goals } = getQueryParams();
+            let recommendations = '';
+
+            switch (goals) {
+                case '提升免疫力':
+                    recommendations = `
+                        <p><strong>維生素C</strong>: 提升免疫系統功能</p>
+                        <p><strong>鋅</strong>: 幫助免疫細胞正常運作</p>
+                        <p><strong>益生菌</strong>: 支持腸道健康，增強免疫力</p>
+                    `;
+                    break;
+                case '促進心血管健康':
+                    recommendations = `
+                        <p><strong>奧米加-3</strong>: 支持心臟健康，降低膽固醇</p>
+                        <p><strong>輔酶Q10</strong>: 改善心血管功能</p>
+                        <p><strong>鎂</strong>: 有助於血壓控制</p>
+                    `;
+                    break;
+                case '增強能量和活力':
+                    recommendations = `
+                        <p><strong>B族維生素</strong>: 幫助能量代謝</p>
+                        <p><strong>鐵</strong>: 改善疲勞和貧血</p>
+                        <p><strong>人參提取物</strong>: 提高身體活力</p>
+                    `;
+                    break;
+                case '改善消化系統':
+                    recommendations = `
+                        <p><strong>益生菌</strong>: 改善腸道菌群平衡</p>
+                        <p><strong>膳食纖維</strong>: 促進腸道蠕動</p>
+                        <p><strong>薄荷油</strong>: 舒緩腸胃不適</p>
+                    `;
+                    break;
+                case '支持骨骼健康':
+                    recommendations = `
+                        <p><strong>維生素D</strong>: 幫助鈣質吸收</p>
+                        <p><strong>鈣</strong>: 支持骨骼強度</p>
+                        <p><strong>維生素K2</strong>: 改善骨骼健康</p>
+                    `;
+                    break;
+                case '保養皮膚':
+                    recommendations = `
+                        <p><strong>膠原蛋白</strong>: 改善皮膚彈性</p>
+                        <p><strong>維生素E</strong>: 抗氧化，保護皮膚細胞</p>
+                        <p><strong>維生素C</strong>: 幫助膠原蛋白形成</p>
+                    `;
+                    break;
+                case '減少炎症':
+                    recommendations = `
+                        <p><strong>奧米加-3</strong>: 有助於降低炎症反應</p>
+                        <p><strong>薑黃素</strong>: 強效抗炎成分</p>
+                        <p><strong>螺旋藻</strong>: 具有抗炎和抗氧化作用</p>
+                    `;
+                    break;
+                default:
+                    recommendations = `<p>無法識別的健康目標。</p>`;
+            }
+
+            document.getElementById('recommendations').innerHTML = recommendations;
+        }
+
+        // 顯示建議
+        showRecommendations();
+    </script>
+</body>
+</html>
